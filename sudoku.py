@@ -60,3 +60,4 @@ def find_empty(board):
                 return i,j
 
 print(find_empty(board))
+
