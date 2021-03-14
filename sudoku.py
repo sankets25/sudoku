@@ -4,17 +4,17 @@
 3. if there is some conflict, backtrack
 4. repeat steps'''
 
-#sudoku board
+#sudoku board list
 board = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]  
+    [4,0,0,0,0,0,0,6,9],
+    [0,0,3,2,0,0,0,8,1],
+    [0,0,0,6,0,0,4,0,0],
+    [1,5,7,0,0,0,6,9,0],
+    [0,0,0,0,7,0,8,0,2],
+    [2,0,4,0,1,6,0,0,0],
+    [5,0,0,0,0,3,7,2,8],
+    [6,0,2,8,9,4,0,3,0],
+    [8,3,1,5,2,0,0,4,0] 
 ]
 
 #solver function with backtrack algorithm.
@@ -76,7 +76,7 @@ def print_board(board):
     #separate lines by each 3 rows
     for i in range(len(board)):
         if i % 3 == 0 and i != 0:
-            print("- - - - - - - - - ")
+            print("- - - - - - - - - - - -")
         #separate line for column division
         for j in range(len(board[0])):
             if j % 3 == 0 and j != 0:
