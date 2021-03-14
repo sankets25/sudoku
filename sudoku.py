@@ -98,10 +98,10 @@ def find_empty(board):
     return None
 
 # print(find_empty(board))
-
+print("*************** Input board ************************")
 print_board(board)
 solve(board)
-print("*************** Output is here *********************")
+print("*************** Output board ***********************")
 print_board(board)
 
 
