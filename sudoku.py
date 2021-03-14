@@ -17,6 +17,30 @@ board = [
     [0,4,9,2,0,6,0,0,7]  
 ]
 
+#solver function with backtrack algorithm.
+def solve(board):
+    #empty spaces in board.
+    #if found is None then board is completely filled
+    found = find_empty(board)
+    if not found:
+        return True
+    else:
+        row, col = found
+
+    #check each values from 1-9 for valid number
+    for i in range(1,10):
+        #if the value is valid then add it into the board
+        if valid(board, i, (row,col)):
+            board[row][col] = i
+
+            #if board solved then return True otherwise make the vlaue to 0
+            if solve(board):
+                return True
+            else:
+                board[row][col] = 0
+    return False
+
+
 #check if board is valid 
 def valid(board, num, pos):
     # checking the row by traversing from start to the end
@@ -30,9 +54,22 @@ def valid(board, num, pos):
         #check if the column has the number which we are inserting and ignore the position column where we are inserting value
         if board[i][pos[1]] == num and pos[0] != i:
             return False
+    
+    #checking each box if the given number is valid or not
+    # considering the values for x and y coordinate
+    box_x = pos[1] // 3
+    box_y = pos[0] // 3
 
-
-
+    #loop through the box as box_x gives values from 0 -2 we are 
+    # multiplying coordinate values with 3
+    for i in range(box_y * 3, box_y * 3 + 3):
+        for j in range(box_x * 3, box_x * 3 + 3):
+            #check if value exists then return false
+            if board[i][j] == num and (i,j) != pos:
+                return False
+    
+    return True
+    
 
 # Function to print the sudoku to get the look and feel
 def print_board(board):
@@ -58,6 +95,13 @@ def find_empty(board):
             # Return position of element where we have empty value
             if board[i][j] == 0:
                 return i,j
+    return None
 
-print(find_empty(board))
+# print(find_empty(board))
+
+print_board(board)
+solve(board)
+print("*************** Output is here *********************")
+print_board(board)
+
 
